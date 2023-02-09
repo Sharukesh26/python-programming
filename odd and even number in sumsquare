@@ -7,12 +7,11 @@ def sumsquare (list):
         else:
                 odd+=num**2
                 return[odd,even]
-            list=[]:
-            n=int(input("enter the terms:"))
-            if n<=o:
-                print("enter a positive terms:")
-                for i in range(o,n):
-                    x=int(input("enter:"))
-                    list1.append(x)
-                    print(list1)
-                    print(sumsquare(list1))
+ n=int(input("enter the terms:"))
+ if n<=o:
+      print("enter a positive terms:")
+  for i in range(o,n):
+      x=int(input("enter:"))
+      list1.append(x)
+  print(list1)
+  print(sumsquare(list1))
