@@ -1,17 +1,25 @@
-a=[]
-b=[]
-n=int(input('enter a first list no.of elements'))
-for i in range(n):
-    m=int(input('enter the values'))
-    a.append(m)
-print(a)
-c=int(input('enter the secondlist no.of elements'))
-for i in range(c):
-    o=int(input('enter the values'))
-    b.append(o)
-print(b)
-          
-a.extend(b)
-print(a)
-a.sort()
-print(a)
+class Solution:
+    def calculate(self, s):
+        def update(op, v):
+            if op == "+": stack.append(v)
+            if op == "-": stack.append(-v)
+            if op == "*": stack.append(stack.pop() * v)           
+            if op == "/": stack.append(int(stack.pop() / v))      
+    
+        it, num, stack, sign = 0, 0, [], "+"
+        
+        while it<len(s):
+            if s[it].isdigit():
+                num = num * 10 + int(s[it])
+            elif s[it] in "+-*/":
+                update(sign, num)
+                num, sign = 0, s[it]
+            elif s[it] == "(":          
+                num, j = self.calculate(s[it + 1:])
+                it = it + j
+            elif s[it] == ")":                                      
+                update(sign, num)
+                return sum(stack), it + 1
+            it += 1
+        update(sign, num)
+        return sum(stack)
