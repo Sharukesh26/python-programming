@@ -1,0 +1,9 @@
+def delchar(string,char):
+        newstr=" "
+        for ch in string:
+                if ch!=char:
+                    newstr+=ch
+        return newstr
+string=input("enter the string:")
+char=input("enter the character to be deleted:")[0]
+print(delchar(string,char))
